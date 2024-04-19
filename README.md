@@ -16,7 +16,7 @@ Ensure you have the following installed:
 
 ## Navigate to the project directory:
 
-cd WeatherForecast
+cd weather-forecast
 
 ## Install dependencies:
 
