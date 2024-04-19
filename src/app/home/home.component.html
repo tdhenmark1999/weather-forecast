@@ -1,0 +1,29 @@
+<div class="wrapper text-center">
+    <!-- Display user information if logged in -->
+    <ng-container *ngIf="auth.user$ | async as user">
+        <div class=" mt-5">
+            <p class="lead">{{ user.name }}</p>
+            <a href="https://github.com/{{ user.nickname }}">
+                https://github.com/{{ user.nickname }}
+            </a>
+        </div>
+    </ng-container>
+
+    <!-- Form for city weather search -->
+    <form (submit)="onSubmit()">
+        <div class="py-3 d-flex justify-content-center">
+            <label for="cityInput" class="visually-hidden">City</label>
+            <input 
+                type="text" 
+                id="cityInput"
+                class="form-control w-50 text-center" 
+                placeholder="Search city" 
+                name="cityData" 
+                [(ngModel)]="cityData" 
+                required>
+        </div>
+        <div class="py-1">
+            <button type="submit" class="btn btn-primary mb-3 ">Display Weather</button>
+        </div>
+    </form>
+</div>

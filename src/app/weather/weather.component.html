@@ -1,0 +1,45 @@
+<div class="container py-5 wrapper">
+    <ng-container *ngIf="data; else noData">
+        <div class="card weather-card">
+            <div class="card-header ">
+                Weather in {{ data.name }}
+            </div>
+            <div class="card-body">
+                <table class="table table-responsive-sm "> 
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Temperature</th>
+                            <th scope="col" class="d-none d-md-table-cell">Description</th>
+                            <th scope="col" class="d-none d-md-table-cell">Condition</th>
+                            <th scope="col" class="d-none d-md-table-cell">Pressure (hPa)</th>
+                            <th scope="col" class="d-none d-md-table-cell">Humidity (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="roboto-regular table-font-size">
+                            <td>{{ today | date:'longDate' }}</td>
+                            <td>{{ data.main.temp | number:'1.0-1' }} °F</td>
+                            <td class="d-none d-md-table-cell">{{ data.weather[0].description | titlecase }}</td>
+                            <td class="d-none d-md-table-cell">{{ data.weather[0].main }}</td>
+                            <td class="d-none d-md-table-cell">{{ data.main.pressure }}</td>
+                            <td class="d-none d-md-table-cell">{{ data.main.humidity }}%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- Template for when there is no data -->
+    <ng-template #noData>
+        <div class="alert alert-danger text-center py-3">
+            No data available for the selected city. Please search again.
+        </div>
+    </ng-template>
+
+    <!-- Navigation button -->
+    <div class="text-center">
+        <button type="button" class="btn btn-primary mt-3 " [routerLink]="['/home']">Back to Home</button>
+    </div>
+</div>
